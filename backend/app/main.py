@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
-from app.routers import users, auth, reactivos, nanomateriales, equipamientos
+from app.routers import users, auth, reactivos, nanomateriales, equipamientos, ordenes
 
 app = FastAPI(title="Laboratorio Nanomateriales API")
 
@@ -20,6 +20,7 @@ app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(reactivos.router, prefix="/reactivos", tags=["Reactivos"])
 app.include_router(nanomateriales.router, prefix="/nanomateriales", tags=["Nanomateriales"])
 app.include_router(equipamientos.router, prefix="/equipamientos", tags=["Equipamientos"])
+app.include_router(ordenes.router, prefix="/ordenes", tags=["Ordenes"])
 
 @app.get("/")
 def root():
